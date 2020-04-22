@@ -75,8 +75,9 @@ module ShoppingDSL =
         let strCI s = pstringCI s .>> spaces
         let uint = puint32 .>> spaces
 
-        let itemCount = (uint .>>. item)
-                        <|> (item |>> fun x -> (1u, x))
+        let itemCount = choice [ (uint .>>. item)
+                                 ((strCI "an" <|> strCI "a") >>. item |>> fun x -> (1u, x))
+                                 (item |>> fun x -> (1u, x)) ]
 
         let pAdd = strCI "add" >>. itemCount
                    |>> fun (count, item) -> addItem count item |> Action

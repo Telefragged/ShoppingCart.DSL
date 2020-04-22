@@ -88,11 +88,14 @@ module ShoppingDSL =
 
         let pGetItemCount = (strCI "get" >>. item) |>> (getItemCount >> Func)
 
+        let pClear = (strCI "clear" >>. item) |>> (clearItem >> Action)
+
         spaces
         >>. choice [ pAdd
                      pSub
                      pSetItemCount
-                     pGetItemCount ]
+                     pGetItemCount
+                     pClear ]
 
     let execute items str =
         match run pInstruction str with

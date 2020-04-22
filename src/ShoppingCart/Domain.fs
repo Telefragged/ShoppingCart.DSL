@@ -82,7 +82,7 @@ module ShoppingDSL =
         let pAdd = strCI "add" >>. itemCount
                    |>> fun (count, item) -> addItem count item |> Action
 
-        let pSub = strCI "sub" >>. itemCount
+        let pSub = (strCI "sub" <|> strCI "remove") >>. itemCount
                    |>> fun (count, item) -> subItem count item |> Action
 
         let pSetItemCount = pipe2 (strCI "set" >>. item) (strCI "to" >>. uint) (fun x y -> (setItemCount x y) |> Action)

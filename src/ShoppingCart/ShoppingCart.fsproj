@@ -9,6 +9,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FParsec" Version="1.1.1" />
-    <PackageReference Include="FSharpPlus" Version="1.1.0" />
+    <PackageReference Include="FSharpPlus" Version="1.1.3" />
   </ItemGroup>
 </Project>
